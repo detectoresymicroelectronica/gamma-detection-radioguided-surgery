@@ -233,7 +233,11 @@ Entre ~2,76 y ~0,51 V reales, la ganancia baja ~5,4 veces (es ∝ V_ov). Además
 
 ![Captura: eventos del Lu-176 con 216 Ω](../docs/images/logs/19_captura_Vov2p5_RF216_LYSO.png)
 
-**Forma y estabilidad.** Pulso promedio de los eventos de 0,5 a 1,5 V, normalizado al pico:
+**Forma y estabilidad.** ver cómo es, en promedio, un pulso de centelleo a la salida de la placa.
+
+- De los 1000 eventos del Lu-176 con 216 Ω, tomé solo los de amplitud media, entre 0.5 y 1.5 V. Dejé afuera los muy chicos, que se mezclan con el ruido, y los muy grandes, que están cerca de saturar.
+- Cada pulso lo dividí por su propio máximo. Así todos valen 1 en el pico, sean de 0.6 V o de 1.4 V. Eso es “normalizar al pico”: queda solo la forma, sin la altura.
+- Los alineé en el tiempo y los promedié. El ruido se cancela y queda la forma típica de un evento.
 
 | Desde el trigger | 0 | 40 ns (pico) | 100 ns | 200 ns | 300 ns | 400 ns | 450–500 ns |
 |---|---|---|---|---|---|---|---|
@@ -243,15 +247,23 @@ Entre ~2,76 y ~0,51 V reales, la ganancia baja ~5,4 veces (es ∝ V_ov). Además
 
 *Figura 2. R_F = 216 Ω, 2,5 V nominal. (a) 40 eventos individuales del Lu-176: sin oscilación ni ringing. (b) Cola del pulso promedio de los dos archivos: el undershoot llega a −0,6 a −0,9 % del pico, lejos del límite C4 (5 %).*
 
-El pulso vuelve a la base a ~400 ns del trigger, y el área acumulada hasta 350 ns ya es el 100 %. **Un segmento de 1 µs con ~0,5 µs antes del trigger alcanza para LYSO.**
+El pulso vuelve a la base a ~400 ns del trigger, y el área acumulada hasta 350 ns ya es el 100 %. **Un segmento de 1 µs con ~0,5 µs antes del trigger alcanza para LYSO.** Parece coindidir con la simulacion. Se confirma que el TIA es estable.
 
-**Rango dinámico:**
+**Rango dinámico:** hasta qué tensión de salida la placa responde bien.
 
 ![Figura 3: rango dinámico de la salida](../docs/images/logs/19_fig3_rango_dinamico.png)
 
 *Figura 3. (a) Con R_F = 2,2 kΩ los eventos saturan a ~2,6 V; después de saturar, la salida baja hasta ~−0,9 V y no vuelve a la base dentro del segmento. (b) Con R_F = 216 Ω, las amplitudes del Lu-176 (2 000 eventos) quedan por debajo del límite lineal (~2,3 V) salvo ~1 de cada 1000. Los pulsos cuadrados del §3.9 (trigger en 2,405 V) se acumulan contra la saturación.*
 
-**Espectro de carga** (`espectro_centelleo_evb.py` v1.0, nuevo; §Scripts):
+Vemos la saturacion del OpAmp. el fotopico de 511 keV tiene que caer debajo de ~2.3 V. Si no, satura y no se puede medir su energía. Con 216 Ω, casi todos los eventos del Lu-176 quedan por debajo (solo ~1 de cada 1000 lo supera), y lo que predice el LOG 9 para el fotopico también entraría.
+
+**Espectro de carga** (`espectro_centelleo_evb.py` v1.0, nuevo; §Scripts): es el “espectro de energía” de los eventos, pero todavía sin pasarlo a keV.
+
+- Para cada evento, en vez de quedarme con la altura del pulso, calculo el área bajo el pulso (integral de la tensión en el tiempo, dividida por R_F). Eso es la carga que entregó el SiPM. Es proporcional a la cantidad de luz y, por lo tanto, a la energía depositada en el cristal.
+- Después armo un histograma: cuántos eventos cayeron con cada valor de carga.
+- Cada microcelda que se dispara produce una avalancha con una carga fija: la carga del SPE, ~481 fC a 2.5 V, medida en el LOG 18.Entonces carga del evento ÷ carga de un SPE = cuántas microceldas se dispararon. A eso le llamé “avalanchas. Es básicamente “número de fotoelectrones”. Le digo avalanchas y no PE porque incluye el crosstalk: algunas celdas se disparan por una celda vecina y no por un fotón.
+
+- Entonces, "Avalancha" = cuantas microceldas se dispararon
 
 | | 16:57 | 17:28 |
 |---|---|---|
@@ -266,6 +278,8 @@ Avalanchas = Q / 481 fC (calibración provisoria, §3.2). Es el número de celda
 ![Figura 5: espectro de carga del Lu-176](../docs/images/logs/19_fig5_espectro_carga.png)
 
 *Figura 5. Espectro de carga del Lu-176 con 216 Ω para los dos archivos (el corte de la izquierda lo pone el trigger, distinto en cada uno). La banda marca dónde caería el fotopico de 511 keV según el LOG 9 para una LCE del 25–50 %; la línea, el límite lineal de la salida.*
+
+Los dos archivos dan el mismo espectro (16:57 y 17:28), así que la medición es repetible. No hay picos claros porque es una mezcla de beta y gammas que a veces se escapan del cristal.
 
 **Hechos:**
 - **Los dos archivos coinciden dentro de ~1,5 %**, en la mediana y en el percentil 99,5, aun con distinto umbral y con 30 minutos de diferencia (fig. 5).
