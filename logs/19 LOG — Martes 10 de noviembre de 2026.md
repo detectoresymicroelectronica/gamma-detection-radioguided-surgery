@@ -215,6 +215,9 @@ Antes de cambiar R_F, bajé V_ov para ver los pulsos sin saturar.
 
 Entre ~2,76 y ~0,51 V reales, la ganancia baja ~5,4 veces (es ∝ V_ov). Además baja la PDE, que cerca del breakdown cae rápido (inferencia).
 
+> [!IMPORTANT]
+> La variabilidad de la altura de los pulsos con la tension de polarizacion que se aprecia en estas mediciones es la justificación experimental de la necesidad de un circuito de compensación térmica. La variación en temperatura genera un corrimiento de V_br, lo cual genera un corrimiento en V_ov, el cual cambia la altura del pulso, potencialmente arruinando la espectroscopia. La caracterización térmica del SiPM y el consecuente diseño de un circuito de compensacion de BIAS es necesario para la sonda.
+
 **Estos datos son cualitativos.** A ~0,5 V real el SPE (~90 fC, ~2 mV con 2,2 kΩ) no se separa del ruido, así que no se puede calibrar en PE. Además, la ganancia varía ~4 %/°C, contra ~0,8 %/°C a 2,76 V. El archivo de 0,25 V se usa solo para la forma del pulso con 2,2 kΩ (§3.10 b).
 
 **Decisión (10/11):** para medir, V_ov fija en 2,5 V nominal y R_F baja (216 Ω). Es lo que prevé el diseño del banco: calibrar con R_F alta y medir con R_F baja.
