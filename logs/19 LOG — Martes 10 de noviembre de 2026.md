@@ -123,6 +123,8 @@ Después de mover todo a la caja, chequeé el SPE a V_ov = 5 V nominal con 2,2 k
 
 ### 3.3 Montaje del LYSO: primero no se veían los eventos
 
+![Captura: montaje LYSO, 2,5 V nominal, 2,2 kΩ](../docs/images/logs/19_montaje_LYSO.png)
+
 Monté el LYSO. Con la configuración del SPE (2,5 V nominal, 2,2 kΩ, escala de pocos mV/div, trigger de pocos mV) no veía ni PE ni eventos de centelleo. Aparecía un pulso constante que no cambiaba; no lo capturé, ocurrió durante la fuga de luz del §3.4 y su causa queda sin determinar.
 
 **Interpretación:**
