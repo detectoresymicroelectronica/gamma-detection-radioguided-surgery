@@ -198,14 +198,20 @@ Antes de cambiar R_F, bajé V_ov para ver los pulsos sin saturar.
 
 \* V_ov real = nominal + 0,26 V, con V_0 = 24,46 ± 0,08 V del LOG 18. Ese valor se midió otro día; entre días, V_0 se movió ~0,3 V.
 
-**V_ov = 2,5 V**
+
 ![Captura: eventos con V_ov = 2,5 V nominal](../docs/images/logs/19_captura_Vov2p5_RF2200_gamma_saturando.png)
 
-**V_ov = 0,5 V**
+*Figura 1. V_ov = 2.5 V.*
+
+
 ![Captura: eventos con V_ov = 0,5 V nominal](../docs/images/logs/19_captura_Vov0p5_RF2200_LYSO.png)
 
-**V_ov = 0,25 V**
+*Figura 2. V_ov = 0.5 V.*
+
+
 ![Captura: eventos con V_ov = 0,25 V nominal](../docs/images/logs/19_captura_Vov0p25_RF2200_LYSO.png)
+
+*Figura 3. V_ov = 0.25 V.*
 
 Entre ~2,76 y ~0,51 V reales, la ganancia baja ~5,4 veces (es ∝ V_ov). Además baja la PDE, que cerca del breakdown cae rápido (inferencia).
 
