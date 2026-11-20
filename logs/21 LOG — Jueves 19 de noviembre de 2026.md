@@ -90,6 +90,7 @@ Ver cualitativamente cómo responde la EVB-TIA v0, con LYSO y con GSO, al radiof
 - **Con el LYSO a 5 mm de la fuente se ve apilamiento.** Con la persistencia de pantalla no se puede sacar la tasa.
 - **En la captura 4 el osciloscopio no disparó** ("Auto?"): el trigger (280 mV) quedó por encima de los pulsos del GSO, así que son barridos sin disparo.
 - **Corriente del SiPM con GSO y sin fuente: 11.36 µA** (lectura de la SMU, figura 11). En el lab, a V_br + 2.5 V, la corriente oscura daba ~0.4–0.6 µA (LOG 5). No quedó determinado a qué se debe la diferencia.
+- **Se observó una clara variación entre la cantidad de pulsos observados y la distancia de la fuente a la placa**
 
 ## 4. Limitaciones
 
