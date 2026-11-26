@@ -2,10 +2,10 @@
 
 ## Campaña de medición con F-18 en INTECNUS: distancia, sensibilidad lateral y angular, blindaje de tungsteno y fantoma NEMA (GSO)
 
-**Tipo:** sesión de medición en INTECNUS (20/11) y análisis de los datos (20/11 y 21/11). Esta vez con el LeCroy y archivos .trc, a diferencia del LOG 21.
+**Tipo:** sesión de medición en INTECNUS (20/11) y análisis de los datos (20/11 y 21/11). Las mediciones las hicimos con Lara Torletti, en el marco de su tesis de maestría. Esta vez con el LeCroy y archivos .trc, a diferencia del LOG 21.
 **Continúa:** LOG 21 (primera medición cualitativa con F-18) y LOG 20 (escala de energía preliminar con el Lu-176).
 
-**Estado al cierre:** medí con F-18 cristales de GSO de cuatro largos en distintas configuraciones y saqué más de 13 GB de .trc. La EVB-TIA v0 resuelve el fotopico de 511 keV del F-18 con una FWHM de 11.8 a 18.6 % según el cristal y la configuración. El espectro tiene las mismas estructuras que un espectro de referencia de F-18 (fotopico y pico de retrodispersión en ~0.17 MeV). La tasa de cuentas baja con la distancia, pero ni A/d² ni A/(d + d0)² describen bien los datos (χ² muy alto en todas las series). El blindaje de tungsteno baja ~30 % el pico de retrodispersión y agrega un pico nuevo en ~55 keV, compatible con los rayos X K del tungsteno. Analicé en detalle solo una parte de los datos; el resto queda para después de los finales.
+**Estado al cierre:** medimos con F-18 cristales de GSO de cuatro largos en distintas configuraciones y sacamos más de 13 GB de .trc. La EVB-TIA v0 resuelve el fotopico de 511 keV del F-18 con una FWHM de 11.8 a 18.6 % según el cristal y la configuración. El espectro tiene las mismas estructuras que un espectro de referencia de F-18 (fotopico y pico de retrodispersión en ~0.17 MeV). La tasa de cuentas baja con la distancia, pero ni A/d² ni A/(d + d0)² describen bien los datos (χ² muy alto en todas las series). El blindaje de tungsteno baja ~30 % el pico de retrodispersión y agrega un pico nuevo en ~55 keV, compatible con los rayos X K del tungsteno. Analicé en detalle solo una parte de los datos; el resto queda para después de los finales.
 
 ---
 
@@ -36,23 +36,37 @@ Medir de forma cuantitativa la respuesta de la EVB-TIA v0 con GSO al F-18, que e
 | Qué | Detalle |
 |---|---|
 | Lugar | INTECNUS |
-| Placa | EVB-TIA v0. R_F y V_bias de esta sesión: **a completar** |
+| Placa | EVB-TIA v0 con el SiPM onsemi MICROFC-60035-SMT, R_F = 216 Ω (JP3), según la tesis de Lara (cap. 4) |
+| Bias del SiPM | V_bias = 27.219 V, elegido para V_ov = 2.5 V nominal. Lectura de la SMU: 27.2188 V y 11.36 µA |
+| Alimentación | 5 V (5.27 mA) |
 | Osciloscopio | LeCroy, modo SEQUENCE, 1000 segmentos por archivo, ventana de 1 µs (500 ns antes del trigger), muestreo de 0.2 ns, entrada DC 1 MΩ |
 | Trigger | 10.5 mV en la primera mitad de las mediciones y 12 mV en la segunda. El punto exacto del cambio está **a completar** |
-| Fuente | F-18. Actividad: **a completar** |
-| Cristales | GSO de cuatro largos. GSO3 = 6 mm, GSO4 = 12 mm. GSO1 y GSO2 son los de 15 y 20 mm, no sé cuál es cuál |
-| Blindaje | Tungsteno (W). En los nombres de archivo, la W después del cristal (GSO3W, GSO4W) indica que se midió con blindaje |
+| Fuente | F-18 en un vial (foto 2). Actividad: **a completar** |
+| Cristales | GSO de 4 × 6 mm² de sección. GSO1 = 20 mm, GSO2 = 15 mm, GSO3 = 6 mm y GSO4 = 12 mm de largo. Todas las caras pintadas de blanco y envueltas en aluminio, salvo la que se acopla al SiPM (tesis de Lara, sección 4.1.1) |
+| Blindaje | Cilindro de tungsteno (W) con apertura axial de 8 mm, pared de 5.20 mm y largo de 36.10 mm (tesis de Lara, tabla 4.1, a confirmar que es el mismo que usamos el 20/11). En los nombres de archivo, la W después del cristal (GSO3W, GSO4W) indica que se midió con blindaje |
 | Soporte | Soporte impreso en 3D del GSO |
 | Temperatura | 22.8 °C en la tanda de 20 cm de la mañana; en el resto no está registrada |
 | Registro | Títulos del LeCroy con el punto medido: `med_<n>_pd<cristal>_X<cm>_Y<cm>_A<grados>_med` ('p' es el punto decimal y 'neg' el signo menos). X es la posición lateral, Y la distancia fuente–placa y A el ángulo |
+
+![Montaje con blindaje, hoja polar y fantoma NEMA](../docs/images/logs/22_foto1_montaje_blindaje_angulo_nema.png)
+
+*Foto 1. Placa con el blindaje cilíndrico sobre la hoja milimetrada y la hoja polar que usamos para fijar el ángulo. Atrás, el fantoma NEMA.*
+
+![Fuente en el vial frente al cristal](../docs/images/logs/22_foto2_fuente_vial.png)
+
+*Foto 2. Fuente de F-18 en un vial, parado sobre la hoja milimetrada frente al cristal.*
+
+![Sujeción de la placa](../docs/images/logs/22_foto3_sujecion_placa.png)
+
+*Foto 3. Sujeción de la placa, vertical y pegada con cinta al borde de una caja, con la hoja milimetrada adelante.*
 
 ## 3. Mediciones
 
 | Serie | Carpeta | Cristal | Puntos | Hora |
 |---|---|---|---|---|
 | Distancia (mañana) | `analisis\Med*` | GSO (4 × 6 × 20 mm³) | fondo, Y = 10, 20 y 30 cm | 11:19–12:01 |
-| Distancia | `Autosave_GSO2` | GSO2 | fondo, Y = 2.5 a 35 cm (8 puntos) | 13:03–13:35 |
-| Distancia | `Autosave_GSO1_again` | GSO1 | Y = 2.5 a 35 cm (8 puntos) | 13:52–14:51 |
+| Distancia | `Autosave_GSO2` | GSO2 (15 mm) | fondo, Y = 2.5 a 35 cm (8 puntos) | 13:03–13:35 |
+| Distancia | `Autosave_GSO1_again` | GSO1 (20 mm) | Y = 2.5 a 35 cm (8 puntos) | 13:52–14:51 |
 | Distancia | `Autosave_GSO3` | GSO3 (6 mm) | fondo, Y = 2.5 a 35 cm (8 puntos) | 15:05–15:39 |
 | Lateral con blindaje | `lateral` | GSO3W | Y = 15 cm, X = −7.5 a 7.5 cm cada 2.5 cm | desde 16:03 |
 | Lateral con blindaje, otra geometría | `diflateralblindaje` | GSO3W | (X, Y) = (0, 5), (5, 0), (2.5, 0) y (0, 2.5) cm | desde 16:39 |
@@ -60,7 +74,7 @@ Medir de forma cuantitativa la respuesta de la EVB-TIA v0 con GSO al F-18, que e
 | Fantoma NEMA | `nema` | GSO3 (6 mm) | MEMA y NEMApos1 a NEMApos4 | desde 17:33 |
 | Distancia y lateral con blindaje | `lateral12mm` | GSO4W (12 mm) | fondo, Y = 2.5 a 15 cm (X = 0), y Y = 15 cm con X = −7.5 a 7.5 cm | desde 18:33 |
 
-Tomé 20 o más archivos de 1000 disparos por punto. Sin contar la serie de la mañana ni `Autosave_GSO2`, la reducción tiene 1480 archivos y 1 479 079 eventos.
+Tomamos 20 o más archivos de 1000 disparos por punto. Sin contar la serie de la mañana ni `Autosave_GSO2`, la reducción tiene 1480 archivos y 1 479 079 eventos.
 
 ## 4. Herramientas de análisis
 
@@ -161,6 +175,7 @@ Criterios comunes a todos los scripts:
 | GSO4W | 2.5 a 15 cm | 2333 (3) | 0.63 ± 0.02 cm | 658 (2) |
 
 - Agregar d0 baja mucho el χ², pero en ninguna serie el ajuste es bueno, ya que los apartamientos del modelo son mucho mayores que las barras de error.
+- En la tesis de Lara, la sensibilidad de GSO2 a 10 cm da 210.9 cps/MBq, con un fondo de 2.89 cps.
 - En GSO2 la tasa va de 38 502 /s a 2.5 cm a 414 /s a 35 cm. A 10 cm el fotopico queda en ~30 V·ns, y la FWHM va de 16.6 a 18.6 % según la distancia.
 - El decaimiento del F-18 afecta a las series. En GSO1 el punto de 2.5 cm se midió a las 13:52 y el resto entre 14:27 y 14:51 (la fuente decae entre 20 y 30 % en ese tiempo), y en GSO3 las distancias se midieron en orden creciente durante 30 minutos. Probé corregirlo y el χ² sigue muy alto, así que el decaimiento no explica por sí solo el desacuerdo.
 - Hipótesis para d0, sin verificar: el punto de referencia de la distancia (placa contra cristal), la profundidad de interacción en el cristal y la geometría de la fuente.
@@ -181,7 +196,7 @@ Criterios comunes a todos los scripts:
 - Con el blindaje, a 2.5 cm del eje la tasa ya baja a entre 18 y 42 % de la del centro.
 - El perfil no es simétrico. A ±2.5 cm, en GSO3W la tasa es 285 /s de un lado y 138 /s del otro.
 - En GSO3W la tasa sube de ±5 a ±7.5 cm en los dos lados.
-- En GSO4W, cinco archivos de X = −5 cm dan entre 68 y 83 /s, el mismo valor que X = −7.5 cm, mientras el resto da ~140 /s. No sé si en esos archivos la fuente estaba en otra posición.
+- En GSO4W, cinco archivos de X = −5 cm dan entre 68 y 83 /s, el mismo valor que X = −7.5 cm, mientras el resto da ~140 /s. No sabemos si en esos archivos la fuente estaba en otra posición.
 
 ### 5.5 Sensibilidad angular
 
@@ -251,8 +266,7 @@ Para ver el efecto del blindaje comparé el mismo punto (X = 0, Y = 5 cm) sin W 
 | Calibración en energía | Un solo punto (511 keV), lineal por cero; las energías bajas no están verificadas |
 | Decaimiento del F-18 | Las tasas no están corregidas; las series duran hasta 1 h |
 | Trigger | Cambió de 10.5 a 12 mV a mitad de la campaña y no sé en qué punto; la base también cambió entre mediciones |
-| Cristales | No sé cuál de GSO1 y GSO2 es el de 15 mm y cuál el de 20 mm |
-| Geometría | No está registrada la posición del blindaje ni la referencia exacta de la distancia |
+| Geometría | No está registrada en este LOG la posición del blindaje ni la referencia exacta de la distancia |
 | Q_SPE | Provisoria, por eso los espectros quedan en V·ns |
 | Análisis parcial | La mayor parte de los datos queda para después de los finales |
 
@@ -272,8 +286,7 @@ Para ver el efecto del blindaje comparé el mismo punto (X = 0, Y = 5 cm) sin W 
 ## Pendientes
 
 - [ ] Indicar en qué punto se cambió el trigger de 10.5 a 12 mV
-- [ ] Identificar cuál de GSO1 y GSO2 es el de 15 mm y cuál el de 20 mm
-- [ ] Completar R_F, V_bias y actividad de la fuente de la sesión
+- [ ] Completar con las fotos y las anotaciones de Lara la actividad de la fuente, el punto desde el que se mide Y, la posición del cristal dentro del blindaje y la definición de X y de A
 - [ ] Completar la fuente del espectro de referencia de la figura 7
 - [ ] Decidir si se corrige el decaimiento del F-18 en las series
 - [ ] Analizar en detalle los datos de la campaña (NEMA, perfiles lateral y angular, comparación entre largos de cristal) en las vacaciones
@@ -302,6 +315,9 @@ Para ver el efecto del blindaje comparé el mismo punto (X = 0, Y = 5 cm) sin W 
 | `22_fig16_puntos_blindaje_GSO3W.png` | Puntos de `diflateralblindaje` |
 | `22_fig17_nema_GSO3.png` | Tasas con el fantoma NEMA |
 | `22_fig18_comparacion_blindaje.png` | Comparación con y sin blindaje en X = 0, Y = 5 cm |
+| `22_foto1_montaje_blindaje_angulo_nema.png` | Montaje con blindaje, hoja polar y fantoma NEMA |
+| `22_foto2_fuente_vial.png` | Fuente en el vial frente al cristal |
+| `22_foto3_sujecion_placa.png` | Sujeción de la placa |
 | `reduccion_archivos.csv`, `reduccion_eventos.npz` | Reducción de la campaña (sin la serie de la mañana ni `Autosave_GSO2`) |
 | `exploratorio_intecnus.py`, `tasa_distancia_intecnus.py`, `espectro_energia_f18.py`, `reducir_intecnus.py`, `series_intecnus.py`, `comparar_blindaje.py` | Scripts de análisis (sección 4) |
 
@@ -310,6 +326,7 @@ Para ver el efecto del blindaje comparé el mismo punto (X = 0, Y = 5 cm) sin W 
 - **LOG 21 (19/11):** primera medición cualitativa con F-18 en INTECNUS.
 - **LOG 20 (12/11):** escala de energía preliminar con el Lu-176.
 - **LOG 18 (06/11):** Q_SPE provisoria.
+- **Tesis de maestría de Lara Torletti** (borrador, noviembre de 2026), "Detector direccional para tejido marcado con radiofármacos para uso quirúrgico", Maestría en Física Médica, Instituto Balseiro: R_F, cristales y blindaje (cap. 4) y sensibilidad de GSO2 a 10 cm (sección 5.2).
 - Rayos X K del tungsteno: Kα2 57.98 keV, Kα1 59.32 keV, Kβ1 67.24 keV (valores tabulados).
 
 ---
