@@ -27,7 +27,6 @@ Ingeniería en Telecomunicaciones · Instituto Balseiro · 2026 a 2027
 <strong>Codirector:</strong> Fabricio Alcalde
 </p>
 
-> 🏁 El 26/11/2026 cerró el primer cuatrimestre del PI. El trabajo de laboratorio queda en pausa durante los finales y se retoma en el receso de verano (ver [Trabajo a mediano plazo](#trabajo-a-mediano-plazo)).
 
 ---
 
