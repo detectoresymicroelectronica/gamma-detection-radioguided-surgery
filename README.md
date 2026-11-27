@@ -10,7 +10,7 @@ Sistema de detección de radiación gamma para asistencia en cirugía laparoscó
 
 <!-- IMAGEN PRINCIPAL (pendiente): tira de tres paneles con la EVB-TIA v0, el espectro de fotoelectrones (LOG 17) y el espectro del F-18 con el fotopico de 511 keV (LOG 22).
 <p align="center">
-  <img src="docs/images/readme/imagen_principal.png" alt="EVB-TIA v0, espectro de fotoelectrones y espectro del F-18" width="100%">
+  <img src="docs/images/imagen_principal.png" alt="EVB-TIA v0, espectro de fotoelectrones y espectro del F-18" width="100%">
 </p>
 -->
 
@@ -84,7 +84,7 @@ docs/               Documentación de soporte e imágenes de los logs y del READ
 ## El sistema hoy
 
 <p align="center">
-  <img src="docs/images/readme/diagrama_sistema.svg" alt="Diagrama del sistema de detección al 26/11/2026" width="100%">
+  <img src="docs/images/diagrama_sistema.svg" alt="Diagrama del sistema de detección al 26/11/2026" width="100%">
 </p>
 
 El fotón de 511 keV interactúa en el centellador, la luz llega al SiPM a través del acople óptico y la carga de cada avalancha entra al TIA de la EVB-TIA v0, que la convierte en un pulso de tensión. El LeCroy guarda los pulsos en archivos `.trc` y el análisis en Python saca el área de cada pulso y arma los espectros.
@@ -96,7 +96,7 @@ El fotón de 511 keV interactúa en el centellador, la luz llega al SiPM a trav�
 ### Hitos
 
 <p align="center">
-  <img src="docs/images/readme/linea_tiempo_hitos.svg" alt="Línea de tiempo de los hitos del primer cuatrimestre" width="100%">
+  <img src="docs/images/linea_tiempo_hitos.svg" alt="Línea de tiempo de los hitos del primer cuatrimestre" width="100%">
 </p>
 
 <details>
