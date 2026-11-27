@@ -252,7 +252,7 @@ Los `.trc` del LeCroy se leen con un lector propio (`exploratorio_intecnus.py`),
 
 ## Contacto
 
-**Dana E. González** · [LinkedIn]([https://www.linkedin.com/in/COMPLETAR](https://www.linkedin.com/in/dana-e-gonzalez/)) · [dana.gonzalez@ib.edu.ar](mailto:dana.gonzalez@ib.edu.ar)
+**Dana E. González** · [LinkedIn]([https://www.linkedin.com/in/dana-e-gonzalez/]) · [dana.gonzalez@ib.edu.ar](mailto:dana.gonzalez@ib.edu.ar)
 
 ---
 
